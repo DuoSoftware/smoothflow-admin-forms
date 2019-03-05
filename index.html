@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="loginapp">
+<head>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>SmoothFlow.io</title>
+	<link rel="shortcut icon" href="../images/sf-small.png" type="image/png">
+	<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+	<!--link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css"-->
+	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="css/commonstyle.css">
+	<link rel="stylesheet" href="css/partialNetwork.css">
+</head>
+<body ng-controller="maincontrol" ng-cloak>
+	<!--<canvas id="particleCanvas"></canvas>-->
+
+	<div id="loading" ng-show="$root.IsBusy" layout="row" layout-align="center center">
+		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	</div>
+
+	<div id="viewContainer" layout="row" layout-align="center center">
+		<div ui-view layout="column" layout-align="center center" style="height: 100%;width: 100%"></div>
+	</div>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>	
+	<script src="bower_components/angular-material/angular-material.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular-hotkeys/build/hotkeys.js"></script>
+	<script src="bower_components/satellizer/dist/satellizer.js"></script>
+	<script src="bower_components/angular-base64/angular-base64.min.js"></script>
+	<!-- <script src="../js/uimicrokernel.js" type="text/javascript"></script> -->
+	<script src="js/app.js"></script>
+	<script src="js/partialNetwork.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#viewContainer').fadeIn();
+		});
+	</script>
+</body>
+</html>

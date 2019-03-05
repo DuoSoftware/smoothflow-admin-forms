@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign in</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @font-face {
+            font-family: 'Bodyfont';
+            src: url('https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/fonts/Roboto-Regular.ttf') format('truetype');
+        }
+        
+        .main-banner {
+            /*background: url("images/main_banner.jpg");*/
+            background-size: cover;
+            height: 100%;
+            /*background: linear-gradient(-45deg, #05a3ec, #05a3ec, rgba(5, 163, 236, 0.3));*/
+            width: 66.66666667%;
+            float: left;
+            max-height: 100%;
+        }
+        
+        .main-body {
+            font-family: 'Bodyfont', Verdana;
+            font-size: 14px;
+            text-align: left;
+            height: 100%;
+            max-height: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            width: 33.33333333%;
+            float: left;
+            box-shadow: 0px 0px 20px #eee;
+        }
+        
+        .main-banner .banner-text {
+            font-family: 'Bodyfont', Verdana;
+            text-align: left;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100px;
+            height: 220px;
+            width: 545px;
+            margin: auto;
+            color: #fff;
+        }
+        
+        .main-banner .banner-text>div:first-child {
+            font-size: 60px;
+            font-weight: 300;
+            line-height: 70px;
+            margin-bottom: 20px;
+            /* width: 430px; */
+        }
+        
+        .main-banner .banner-text>div:last-child {
+            font-size: 17px;
+        }
+        
+        .main-block {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        .preloader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .preloader img {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .input-content-wrap {
+            padding: 30px;
+        }
+        
+        ul {
+            padding-left: 0;
+            list-style: none;
+            list-style-type: none;
+        }
+        
+        input[type='text'],
+        input[type='password'],
+        select {
+            height: 30px!important;
+            padding-left: 3px!important;
+            margin: 0!important;
+            border: 1px solid #b8b8b8!important;
+            border-radius: 0!important;
+            z-index: 3!important;
+            background: transparent!important;
+            color: #000!important;
+            width: 100%!important;
+        }
+        
+        input:focus {
+            outline: none!important;
+            border: solid 1px #000!important;
+            border-color: #000000!important;
+            border-radius: 0!important;
+        }
+        
+        button {
+            background: #2672ec;
+            border: 1px solid #fff;
+            padding: 6px 12px 6px 12px;
+            color: #fff;
+            width: auto;
+            cursor: pointer;
+            margin-right: 4px;
+            transition: background 1s;
+            -moz-transition: background 1s;
+            -webkit-transition: background 1s;
+            -o-transition: background 1s;
+            transition-property: background;
+            transition-duration: 1s;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            display: inline-block;
+        }
+        
+        .login_workload_logo_container {}
+        
+        .login_workload_logo_container img {
+            width: 170px;
+        }
+        
+        .error p,
+        .helpText {
+            color: #ca0000!important;
+            font-size: 12px!important;
+        }
+        
+        .divider {
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+            text-shadow: 0 1px 0 #fff;
+            top: -10px;
+        }
+        
+        .divider h2 {
+            line-height: 0px;
+            margin: 0px auto;
+            text-align: center;
+            font-size: 11px!important;
+            color: #aaa;
+            padding: 10px;
+            width: 40px;
+        }
+        
+        .divider h2:after,
+        .divider h2:before {
+            content: "";
+            height: 1px;
+            position: absolute;
+            top: 10px;
+            width: 40%;
+            opacity: 0.2;
+        }
+        
+        .divider h2:after {
+            background: rgb(126, 126, 126);
+            background: linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -moz-linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -ms-linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -o-linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -webkit-linear-gradient(left, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            right: 15px;
+        }
+        
+        .divider h2:before {
+            background: rgb(126, 126, 126);
+            background: linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -moz-linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -ms-linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -o-linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            background: -webkit-linear-gradient(right, rgba(126, 126, 126, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            left: 15px;
+        }
+        
+        .attrEntry #email_intro {
+            display: none !important;
+        }
+        
+        .attrEntry input[type=text],
+        .attrEntry input[type=password] {
+            padding: 0 3px!important;
+        }
+        
+        div[data-name='idpSelector']>div[role='form']>ul li:first-child:after,
+        .or:before {
+            content: 'OR';
+            display: block;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            line-height: 0px;
+            height: 1px;
+            font-size: 11px!important;
+            background: linear-gradient(45deg, #fff, #ddd, #ccc, #ccc, #fff, #fff, #ccc, #ccc, #ddd, #fff);
+        }
+        
+        #attributeList ul li {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        #attributeList ul li:last-child {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #05a3ec;
+        }
+        
+        #attributeList ul li:last-child input {
+            background: #f3fcff!important;
+            border: solid 1px #c0e7ef!important;
+            width: 165px!important;
+            font-weight: normal!important;
+        }
+        
+        #attributeList ul li:first-child input {
+            width: 100%!important;
+            background: #ffffff!important;
+        }
+        
+        #attributeList ul li:last-child input:focus {
+            border: solid 1px #6cb4c3!important;
+        }
+        
+        #attributeList ul li:last-child:before {
+            content: "https://";
+            display: inline-block;
+        }
+        
+        #attributeList ul li:first-child:before {
+            display: none;
+        }
+        
+        #attributeList ul li:last-child>div.attrEntry {
+            display: inline-block;
+            /*width: 165px;*/
+        }
+        
+        #attributeList ul li:first-child>div.attrEntry {
+            display: inline-block;
+            width: 100%;
+        }
+        
+        #attributeList ul li:last-child:after {
+            content: ".cloudcharge.com";
+            display: inline-block;
+        }
+        
+        #attributeList ul li:first-child:after {
+            display: none;
+        }
+        
+        #extension_mode {
+            display: none!important;
+        }
+        
+        .attrEntry .error.itemLevel,
+        .attrEntry .helpText,
+        .phoneEntry .error.itemLevel,
+        .phoneEntry .helpText,
+        #codeVerification .error.itemLevel,
+        #codeVerification .helpText {
+            display: none;
+        }
+        
+        .attrEntry .tiny,
+        .phoneEntry .tiny,
+        #codeVerification .tiny {
+            display: none;
+        }
+        
+        #footer_links_container {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding-bottom: 20px;
+        }
+        
+        #footer_links_container .footer_glyph {
+            text-align: right;
+            padding-right: 50px;
+            font-size: 11px;
+        }
+        
+        #footer_links_container .footer_glyph img {
+            width: 100px;
+            margin-left: 10px;
+        }
+        
+        .divider {
+            margin-top: 30px;
+        }
+        
+        .social .intro h2,
+        .localAccount .intro h2,
+        .divider h2 {
+            font-size: 14px;
+        }
+        
+        .options>div {
+            display: inline-block;
+        }
+        
+        .options button {
+            width: 130px;
+        }
+        
+        #api {
+            margin-top: 50px;
+        }
+        
+        #FacebookExchange {
+            background-color: #3B5595!important;
+            background-image: url("https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/images/facebook.png");
+            background-repeat: no-repeat;
+            background-size: 40px;
+            padding-left: 45px;
+            margin: 0 10px 10px 0;
+        }
+        
+        #FacebookExchange:hover {
+            background-color: #354C86
+        }
+        
+        #LinkedInExchange {
+            background-color: #00669c!important;
+            background-image: url("https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/images/linkedin.png");
+            background-repeat: no-repeat;
+            background-size: 40px;
+            padding-left: 45px;
+            margin: 0 10px 10px 0;
+        }
+        
+        #LinkedInExchange:hover {
+            background-color: #005380;
+        }
+        
+        #AmazonExchange {
+            background-color: #efefef!important;
+            background-image: url("https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/images/amazon.png");
+            background-repeat: no-repeat;
+            background-size: 40px;
+            padding-left: 45px;
+            margin: 0 10px 10px 0;
+            border: solid 1px #efefef;
+            color: #000;
+        }
+        
+        #AmazonExchange:hover {
+            background-color: #ddd
+        }
+        
+        #forgotPassword {
+            clear: right;
+            cursor: pointer;
+            float: right;
+            /*margin-top: 10px;*/
+            transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            -o-transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            position: relative;
+            bottom: -60px;
+        }
+        
+        #GoogleExchange {
+            background-color: #C64A29!important;
+            background-image: url("https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/images/googleplus.png");
+            background-repeat: no-repeat;
+            background-size: 40px;
+            padding-left: 45px;
+            margin: 0 10px 10px 0;
+        }
+        
+        #GoogleExchange:hover {
+            background-color: #C14325;
+        }
+        
+        #MicrosoftAccountExchange {
+            background-color: #28B1E6!important;
+            background-image: url("https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/images/microsoft.png");
+            background-repeat: no-repeat;
+            background-size: 40px;
+            padding-left: 45px;
+            margin: 0 10px 10px 0;
+        }
+        
+        #MicrosoftAccountExchange:hover {
+            background-color: #189DCF;
+        }
+        
+        #IdentifyServerExchange {
+            background-color: #28B1E6!important;
+            background-image: url("https://ccresourcegrpdisks974.blob.core.windows.net/b2c/CC_custom_auth/images/wingtipcorp.png");
+            background-repeat: no-repeat;
+            background-size: 40px;
+            padding-left: 45px;
+            margin: 0 10px 10px 0;
+        }
+        
+        #IdentifyServerExchange:hover {
+            background-color: #189DCF;
+        }
+        
+        #SignUpWithLogonEmailExchange,
+        #SignInWithLogonNameExchange {
+            background-color: #2672F3!important;
+            background-size: 40px;
+            text-align: center;
+            margin: 0 10px 10px 0;
+        }
+        
+        #SignUpWithLogonEmailExchange:after {
+            background-color: #2672F3!important;
+            background-size: 35px;
+            text-align: center;
+            margin: 0 10px 10px 0;
+        }
+        
+        #logonIdentifier,
+        #password,
+        #signInName {
+            height: 28px;
+            padding-left: 3px;
+            margin: 0;
+            border: 1px solid #b8b8b8;
+            z-index: 3;
+            background: transparent;
+            color: #000;
+            width: 100%;
+        }
+        
+        #logonIdentifier:focus,
+        #password:focus,
+        #signInName:focus {
+            outline: none;
+            border: 1px solid black;
+        }
+        
+        .entry-item {
+            width: 350px;
+        }
+        
+        .entry-item label,
+        .attrEntry label {
+            display: none!important;
+        }
+        
+        .buttons {
+            margin-top: 20px;
+        }
+        
+        .buttons button {
+            background: #2672ec!important;
+            border: 1px solid #fff!important;
+            border-radius: 0!important;
+            padding: 6px 12px 6px 12px!important;
+            color: #fff!important;
+            width: auto!important;
+            height: 31px!important;
+            cursor: pointer!important;
+            margin: 0 4px 0 0!important;
+            transition: background 1s!important;
+            -moz-transition: background 1s!important;
+            -webkit-transition: background 1s!important;
+            -o-transition: background 1s!important;
+            transition-property: background!important;
+            transition-duration: 1s!important;
+            -webkit-touch-callout: none!important;
+            -webkit-user-select: none!important;
+            -khtml-user-select: none!important;
+            -moz-user-select: none!important;
+            -ms-user-select: none!important;
+            -o-user-select: none!important;
+            user-select: none!important;
+            /*display: inline-block!important;*/
+        }
+        
+        .accountButton {
+            height: 40px;
+        }
+        
+        .buttons button:hover {
+            background: #d4e3fb!important;
+            border: 1px solid #fff!important;
+        }
+        
+        .sendButton,
+        .verifyButton {
+            font-size: 14px;
+        }
+        
+        #createAccount {
+            margin-left: 5px;
+        }
+        
+        .localAccount .create {
+            display: none!important;
+        }
+    </style>
+</head>
+
+<body>
+    <!--<div id="loading" ng-if="show" layout="column" layout-align="center center">
+	  	<md-card style="background-color:white;" layout-padding>
+	  		<div layout-padding layout="row" layout-align="space-around center">
+	  			<md-progress-circular class="md-primary" md-mode="indeterminate" md-diameter="20"></md-progress-circular>
+	  			<p id="busycontent">Getting your Environment ready!</p>
+	  		</div>
+	  	</md-card>
+	  </div>-->
+    <div class="clearfix main-block">
+        <div class="main-banner">
+            <img src="img/logos/smooth flow full logo-01.png" style="width: inherit;height: initial;margin-top: 12%;margin-left: 8%;"
+            />
+        </div>
+        <div class="main-body">
+            <div class="input-content-wrap">
+                <div class="login_workload_logo_container">
+                </div>
+
+                <div id="api" style="font-size: medium;margin-bottom: 10px;">Congratulations</div>
+                <p>{{activeStatus.Message}}</p>
+                <button type="button" ng-click="lunchApp()">go to smoothflow</button> </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

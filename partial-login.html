@@ -1,0 +1,79 @@
+<form name="loginform" ng-submit="onSignIn()">
+
+
+	<md-card class="loginBox">
+		<div style="margin-top: 10px;">
+			<a ng-href="http://www.smoothflow.io/"><img ng-src="../images/sf-full-small.png" class="md-card-image" alt="Washed Out"></a>
+
+		</div>
+		<md-card-content>
+
+
+			<div style="margin:10px">
+				<md-input-container class="md-icon-float" layout="row">
+					<label>Email</label>
+					<md-icon md-svg-src="img/ic_mail_24px.svg" class="iconColor"></md-icon>
+					<input required type="email" id="userName" name="userName" ng-model="user.userName" />
+				</md-input-container>
+
+				<md-input-container class="md-icon-float" layout="row">
+					<label>Password</label>
+					<md-icon md-svg-src="img/ic_lock_24px.svg" class="iconColor"></md-icon>
+					<input required type="password" name="password" ng-model="user.password" />
+				</md-input-container>
+			</div>
+
+			<div id="loginButton " class="md-actions" layout="row " layout-align="center center ">
+				<md-button class="md-raised md-primary " type="submit " flex>LOGIN</md-button>
+			</div>
+
+			<div class="md-actions " layout="row " layout-align="center center ">
+				<style>
+					text {
+						width: 80%;
+						text-align: center;
+						border-bottom: 1px solid rgb(63, 81, 181);
+						line-height: 0.1em;
+						margin-top: 10px;
+						margin-bottom: 10px;
+					}
+					
+					text span {
+						background: #fff;
+						padding: 0 10px;
+						font-style: italic;
+						font-weight: 700;
+						color: rgb(63, 81, 181);
+					}
+				</style>
+				<text><span>or</span></text>
+			</div>
+<!-- 
+			<div class="md-actions " layout="row " layout-align="space-around center ">
+				<md-button class="md-raised md-primary secondaryLogin " style="background:#3b5998 " href="http://smoothflow.io/signup/facebookRegister/
+						"><span class="ion-social-facebook-outline "></span><span class="loginBtnLabel ">Facebook </span></md-button>
+				<md-button class="md-raised md-primary secondaryLogin " style="background:#dd4b39 " href="http://smoothflow.io/signup/googlePlusRegister/
+						"><span class="ion-social-googleplus "></span><span class="loginBtnLabel ">Google+</span></md-button>
+				<md-button class="md-raised md-primary secondaryLogin " style="background:#00aced " href="http://smoothflow.io/signup/twitterRegister/?connect=twitter"><span class="ion-social-twitter-outline "></span><span class="loginBtnLabel ">Twitter </span></md-button>
+			</div> -->
+			<div layout="row" layout-align="center center">
+				<md-button class="md-icon-button" aria-label="Use Android" href="http://smoothflow.io/signup/facebookRegister/">
+					<md-icon  md-svg-icon="../images/facebook-logo.svg" style="color: #3b5998 ;"></md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Use Android" href="http://smoothflow.io/signup/googlePlusRegister/">
+					<md-icon class="iconhover"  md-svg-icon="../images/google-plus.svg" style="color: #dd4b39;"></md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Use Android" href="http://smoothflow.io/signup/twitterRegister/?connect=twitter/">
+					<md-icon  md-svg-icon="../images/twitter-black-shape.svg" style="color: #00aced;"></md-icon>
+				</md-button>
+			</div>
+
+			<div id="footerButtons" class="md-actions " layout="column" layout-align="end center">
+				<div><span>Dont have an account? </span><a ui-sref="signup">Signup</a></div>
+			</div>
+			<div id="footerButtons" class="md-actions " layout="column" layout-align="end center">
+				<div><a ui-sref="forgotpassword ">Forgot password?</a></div>
+			</div>
+		</md-card-content>
+	</md-card>
+</form>

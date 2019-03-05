@@ -1,0 +1,11 @@
+{
+  "name": "smoothflow-admin-forms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DuoSoftware/smoothflow-admin-forms.git",
+  "author": "Shehan Tissera <shehanproductions@ymail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular-material": "^1.1.13"
+  }
+}
