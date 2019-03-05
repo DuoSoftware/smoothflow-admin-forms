@@ -1,61 +1,40 @@
-<form name="loginform" ng-submit="onSignUp()" autocomplete="off">
-	<md-card class="loginBox">
-		<div style="margin-top: 10px;">
-			<a ng-href="http://www.smoothflow.io/"><img ng-src="../images/sf-full-small.png" class="md-card-image" alt="Washed Out" ></a>
-		</div>
-		<md-card-content>
-			<div style="margin:10px">
-				<md-input-container class="md-icon-float" layout="row">
-					<label>Company Name</label>
-					<md-icon md-svg-src="img/ic_person_24px.svg" class="iconColor"></md-icon>
-					<input required type="text" name="companyName" ng-model="user.company" ng-keyup="onCheckOraganizationAvailability(user.company)" />
-					<md-icon class="iconalign" ng-if="isavalableCname == true" md-svg-src="img/ic_done_24px.svg"></md-icon>
-					<md-icon class="iconalign" ng-if="isavalableCname == false" md-svg-src="img/ic_close_24px.svg"></md-icon>
-				</md-input-container>
-				<!-- <div layout="row" style=" margin: -15px; padding-left: 15px; padding-right: 15px;"> -->
-					<md-input-container class="md-icon-float" layout="row">
-						<label>Email</label>
-						<md-icon md-svg-src="img/ic_mail_24px.svg" class="iconColor"></md-icon>
-						<input required type="email" id="userName" name="userName" ng-model="user.mail" ng-keyup="onCheckOwnerAvailability(user.mail)"/>
-						<md-icon class="iconalign" ng-if="isavalable == true" md-svg-src="img/ic_done_24px.svg"></md-icon>
-						<md-icon class="iconalign" ng-if="isavalable == false" md-svg-src="img/ic_close_24px.svg"></md-icon>
-					</md-input-container>
-					
-					<md-icon ng-show="isavailabilityNA" md-svg-src="img/ic_error_outline_24px.svg"></md-icon>
-				<!-- </div> -->
-				<md-input-container class="md-icon-float" layout="row">
-					<label>Password</label>
-					<md-icon md-svg-src="img/ic_lock_24px.svg" class="iconColor"></md-icon>
-					<input required type="password" id="password" name="password" ng-model="user.password"/>
-				</md-input-container>
-				<md-input-container class="md-icon-float" layout="row">
-					<label>Confirm Password</label>
-					<md-icon md-svg-src="img/ic_lock_24px.svg" class="iconColor"></md-icon>
-					<input required type="password" id="cpassword" name="cpassword" ng-model="user.cpassword" ng-keyup="check();"/>
-					<md-icon class="iconalign" ng-if="confirm == false"  md-svg-src="img/ic_close_24px.svg" class="iconColor"></md-icon>
-					<md-icon class="iconalign" ng-if="confirm == true"  md-svg-src="img/ic_done_24px.svg" class="iconColor"></md-icon>  
-				</md-input-container>
-				 
-				<md-input-container class="md-icon-float" layout="row">
-					<md-checkbox class="md-primary" ng-model="isChecked" aria-label="Accept Terms & Condition" style="margin-top: auto;font-size: smaller;">
-						I agree with the <a target="_blank" href="http://www.smoothflow.io/terms-and-conditions/">Terms and Conditions</a>						and <a target="_blank" href="http://www.smoothflow.io/acceptable-use-policy/">Acceptable Use Policy</a>.
-					</md-checkbox>
-				</md-input-container>
-			</div>
+<!-- <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">Toolbar: md-warn</h2>
+	</div>
+	ng-controller="SignUpCtrl"
+  </md-toolbar> -->
 
-			<div id="loginButton" class="md-actions" layout="row" layout-align="center center">
-				<md-button class="md-raised md-primary" type="submit" ng-disabled="!isChecked || isavalable==false || Available==false || loginform.$invalid" flex>SIGNUP</md-button>
-			</div>
+<div class="md-toolbar-tools">
+	<h2 class="md-flex">Smoothflow Events</h2>
+</div>
+<md-content ng-controller="SignUpCtrl as ctrl" flex layout-padding>
 
-			<div style="text-align:center; font-size:13px;">
-				<a href ng-click="signin();" target="_blank">Back to login</a> 
-			</div>
-
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">On User Signup</span>
+				<span class="md-subhead">When a new user creates an acccount on Smoothflow.</span>
+			</md-card-title-text>
+			<!-- <md-card-title-media>
+										<div class="md-media-lg card-media"></div>
+									</md-card-title-media> -->
+		</md-card-title>
+		<md-card-content layout="row" layout-align="space-between">
+			<md-autocomplete flex md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText"
+				md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0"
+				placeholder="Which automation to run then?" input-aria-label="Favorite State" md-autofocus>
+				<md-item-template>
+					<span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+				</md-item-template>
+				<md-not-found>
+					No states matching "{{ctrl.searchText}}" were found.
+				</md-not-found>
+			</md-autocomplete>
 		</md-card-content>
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button>Save Changes</md-button>
+		</md-card-actions>
 	</md-card>
-</form>
-<!-- <div ng-hide="emailSuccess">
-	<signup-verify-partial.html>
-	
 
-</div> -->
+</md-content>
