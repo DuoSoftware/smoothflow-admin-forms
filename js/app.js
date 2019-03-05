@@ -1,5 +1,5 @@
 //added by lakmini 18/08/2017
-var mainModule = angular.module("loginapp", ['ngMaterial', 'uiMicrokernel', 'ui.router', 'ngCookies', 'cfp.hotkeys', 'satellizer', 'base64']).run(function ($rootScope, $location) {
+var mainModule = angular.module("admincontrols", ['ngMaterial', 'uiMicrokernel', 'ui.router', 'ngCookies', 'cfp.hotkeys', 'satellizer', 'base64']).run(function ($rootScope, $location) {
     $rootScope.location = $location;
 });
 mainModule.constant("AppConfigurations", {
@@ -64,6 +64,7 @@ mainModule.controller("maincontrol", function ($rootScope, $scope, $location, $h
     //check tenat and validate
     $scope.show = false;
     $scope.message = "";
+    $rootScope.IsBusy = false;
     $scope.validateTenant = function (tenant) {
         $scope.show = true;
 
