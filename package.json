@@ -6,6 +6,7 @@
   "author": "Shehan Tissera <shehanproductions@ymail.com>",
   "license": "MIT",
   "dependencies": {
+    "angular": "^1.7.7",
     "angular-material": "^1.1.13"
   }
 }

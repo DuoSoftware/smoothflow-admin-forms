@@ -6,3 +6,8 @@ angular-material@^1.1.13:
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.13.tgz#36c9cee590156f7e9d2be3bf6b2bf277f1293b4d"
   integrity sha512-qWc5WOhRa/sbQmiRwenOla2Pky3w+wgW0l5Wp3J6jmB/WWxMWW7+JMdCXo1diGEETTKTF2vLdeWTceDTNehmSw==
+
+angular@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.7.tgz#26bd87693deadcbd5944610a7a0463fc79a18803"
+  integrity sha512-MH3JEGd8y/EkNCKJ8EV6Ch0j9X0rZTta/QVIDpBWaIdfh85/e5KO8+ZKgvWIb02MQuiS20pDFmMFlv4ZaLcLWg==
